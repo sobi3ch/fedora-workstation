@@ -24,97 +24,65 @@
     - hub # https://hub.github.com/
     - inotify-tools
     - inxi
-    - iotop
-    - iptraf-ng
     - jq
-    - kismet
     - letsencrypt
-    - lftp
-    - libguestfs
-    - libguestfs-tools
-    - libguestfs-tools-c
-    - libguestfs-xfs
-    - libicns-utils
-    - libmtp-examples
-    - libnfs
-    - libnfsidmap
+    # - lftp
+    # - libguestfs
+    # - libguestfs-tools
+    # - libguestfs-tools-c
+    # - libguestfs-xfs
     - libtool
     - libvirt
-    - livecd-tools
-    - liveusb-creator
-    - lorax
     - lshw
-    - lsscsi
-    - ltrace
     - ncftp
-    - nfs-utils
+    # - nfs-utils
     - ngrep
     - nmap
     - nmon
-    - pandoc
-    - pass
-    - patchutils
-    - pavucontrol
-    - pavumeter
-    - pinta
-    - pssh
+    # - pandoc # convert a markdown file to another file format
+    # - pass # https://www.passwordstore.org/
+    # - pssh
     - pv
-    - pykickstart
     - pylint
-    - pyp2rpm
     - pypy
-    - pytest
-    - python3-firewall
     - python3-virtualenv
-    - qiv
-    - qpdf
-    - ranger
-    - recode
-    - rpm-ostree
-    - ruby
-    - ruby-irb
-    - rubygems
-    - sbcl
-    - scap-workbench
-    - scapy
+    # - qiv # lightwaight image viewer # https://www.linuxlinks.com/qiv/
+    # - qpdf
+    - ranger # https://ranger.github.io/
+    # - rpm-ostree
+    # - ruby
+    # - ruby-irb
+    # - rubygems
     - screen
-    - screenfetch
-    - setools-console
-    - sg3_utils
-    - smartmontools
-    - snapd
-    - socat
-    - spec2scl
+    - screenfetch # google image for screenfetch
+    # - setools-console # selinux
+    # - socat # https://www.redhat.com/sysadmin/getting-started-socat
     - speedtest-cli
-    - spin-kickstarts
     - strace
-    - sysstat
-    - system-storage-manager
-    - task
+    # - sysstat
+    # - system-storage-manager # https://system-storage-manager.github.io/
+    - task # task manager (todo) : https://www.systutorials.com/docs/linux/man/1-task/
     - terminator
-    - testdisk
-    - tlp
-    - tlp-rdw
+    # - testdisk
+    # - tlp # https://linrunner.de/tlp/index.html
+    # - tlp-rdw # https://linrunner.de/tlp/usage/tlp-rdw.html
     - tmux
     - transmission-cli
-    - tuned
-    - tuned-utils
-    - tuned-utils-systemtap
+    # - tuned # https://tuned-project.org/
+    # - tuned-utils
+    # - tuned-utils-systemtap
     - units
     - vagrant
     - vagrant-doc
-    - vagrant-libvirt
-    - vagrant-libvirt-doc
+    # - vagrant-libvirt
+    # - vagrant-libvirt-doc
     - vim-enhanced
-    - virt-top
+    # - virt-top
     - whois
-    - xbacklight
+    # - xbacklight
     - xclip
-    - xfsdump
-    - xournal
+    # - xournal # google images for xournal
     - xsel
-    - ykclient
-    - ykpers
     state: installed
 
 - name: Install extra fonts
