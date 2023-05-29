@@ -5,24 +5,12 @@
     state: present
   when: install_chrome
 
-- name: Install Google Talk
-  dnf:
-    name: google-talkplugin
-    state: present
-  when: install_googletalk
-
 - name: Install Spotify
   dnf:
     name: spotify-client
     state: present
   ignore_errors: yes
   when: install_spotify
-
-- name: Install Sublime Text
-  dnf:
-    name: sublime-text
-    state: present
-  when: install_sublime_text
 
 - name: Install Slack
   dnf:
@@ -41,14 +29,6 @@
     name: authy
     channel: beta
   when: install_authy
-
-- name: Install Bitwarden and Bitwarden CLI
-  snap:
-    name:
-      - bitwarden
-      - bw
-    channel: beta
-  when: install_bitwarden
 
 - name: Install Slack
   dnf:
@@ -69,23 +49,3 @@
     when: not zoom_installed.stat.exists
 
   when: install_zoom
-
-- block:
-
-  - name: Check for Atom
-    stat: path=/usr/bin/atom
-    register: atom_installed
-
-  - name: Download Atom RPM
-    get_url:
-      url: https://atom.io/download/rpm
-      dest: /tmp/atom.rpm
-    when: not atom_installed.stat.exists
-
-  - name: Install Atom RPM
-    dnf:
-      name: /tmp/atom.rpm
-      state: present
-    when: not atom_installed.stat.exists
-
-  when: install_atom

@@ -13,23 +13,8 @@
 
     - name: Enable Google Chrome repo
       command: dnf config-manager --set-enabled google-chrome
-      args:
-        warn: false
 
   when: install_chrome
-
-- block:
-
-    - name: Check for Google Talk repo
-      stat: path=/etc/yum.repos.d/google-talkplugin.repo
-      register: googletalk_installed
-
-    - name: Install Google Talk repo
-      dnf:
-        name: 'https://dl.google.com/linux/direct/google-talkplugin_current_x86_64.rpm'
-        state: present
-      when: not googletalk_installed.stat.exists
-  when: install_googletalk
 
 - block:
 
@@ -42,18 +27,6 @@
       when: not fedora_spotify_installed.stat.exists
 
   when: install_spotify
-
-- block:
-
-    - name: Check for sublime-text repo
-      stat: path=/etc/yum.repos.d/sublime-text.repo
-      register: fedora_sublime_text_installed
-
-    - name: Install sublime-text repo
-      command: dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
-      when: not fedora_sublime_text_installed.stat.exists
-
-  when: install_sublime_text
 
 - block:
 
@@ -103,26 +76,34 @@
 
   when: install_slack
 
-- block:
+# - block:
 
-    - name: Check for RPM Fusion Free repo
-      stat: path=/etc/yum.repos.d/rpmfusion-free.repo
-      register: fedora_rpm_fusion_free_installed
+#     - name: Check for RPM Fusion Free repo
+#       stat: path=/etc/yum.repos.d/rpmfusion-free.repo
+#       register: fedora_rpm_fusion_free_installed
 
-    - name: Check for RPM Fusion Nonfree repo
-      stat: path=/etc/yum.repos.d/rpmfusion-nonfree.repo
-      register: fedora_rpm_fusion_nonfree_installed
+#     - name: Check for RPM Fusion Nonfree repo
+#       stat: path=/etc/yum.repos.d/rpmfusion-nonfree.repo
+#       register: fedora_rpm_fusion_nonfree_installed
 
-    - name: Install RPM Fusion repo rpms
-      dnf:
-        name: "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
-        state: present
-      when: not fedora_rpm_fusion_free_installed.stat.exists
+## implement here first
+## https://rpmfusion.org/keys#Verify_GPG_signatures_on_install
 
-    - name: Install RPM Fusion Nonfree repo rpms
-      dnf:
-        name: "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
-        state: present
-      when: not fedora_rpm_fusion_nonfree_installed.stat.exists
+#     - name: Import RPM Fusion GPG key
+#       rpm_key:
+#         state: present
+#         key: https://slack.com/gpg/slack_pubkey_2019.gpg
 
-  when: install_rpmfusion
+#     - name: Install RPM Fusion repo rpms
+#       dnf:
+#         name: "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
+#         state: present
+#       when: not fedora_rpm_fusion_free_installed.stat.exists
+
+#     - name: Install RPM Fusion Nonfree repo rpms
+#       dnf:
+#         name: "http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
+#         state: present
+#       when: not fedora_rpm_fusion_nonfree_installed.stat.exists
+
+#   when: install_rpmfusion
