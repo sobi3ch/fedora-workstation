@@ -24,17 +24,12 @@
     state: present
   when: install_vscode
 
-- name: Install Authy
-  snap:
-    name: authy
-    channel: beta
-  when: install_authy
 
-- name: Install Slack
-  dnf:
-    name:
-      - slack
-    state: present
+# - name: Install Slack
+#   dnf:
+#     name:
+#       - slack
+#     state: present
 
 - block:
 

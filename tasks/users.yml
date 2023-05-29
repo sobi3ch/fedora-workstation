@@ -9,7 +9,7 @@
   user:
     name: "{{ local_user }}"
     home: /home/{{ local_user }}
-    groups: mock,vagrant,libvirt,wheel
+    groups: wheel
     append: yes
 
 - name: Allow wheel group to sudo without a password
@@ -20,11 +20,6 @@
     line: '%wheel ALL=(ALL) NOPASSWD: ALL'
     validate: visudo -cf %s
   when: local_user_passwordless_sudo
-
-- name: Grant {{ local_user }} access to libvirt via polkit
-  template:
-    src: templates/libvirt_polkit.j2
-    dest: /etc/polkit-1/rules.d/50-org.libvirt.unix.manage.rules
 
 - name: Create /home/{{ local_user }}/.cert directory
   file:
